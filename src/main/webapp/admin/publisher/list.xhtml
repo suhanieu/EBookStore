@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition template="/WEB-INF/templates/mainTemplate/mainTemplate.xhtml">
+        <ui:define name="content">
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h4>
+                        <a href="#{request.contextPath}/protected/dashBoard.xhtml">Dashboard 
+                        </a> >> <a href="#{request.contextPath}/protected/admin/publisher/list.xhtml">All Publishers</a>
+
+                    </h4>
+
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <p:inputText type="hidden"/>
+                    <!-- Default box -->
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Available Categories</h3>
+                            <p style="font-size:large; "><a class="btn btn-large btn-success" href="create.xhtml">Create</a></p>
+
+                        </div>
+                        <div class="box-body">
+                            Start creating your amazing application!
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+
+                        </div>
+                        <!-- /.box-footer-->
+                    </div>
+                    <!-- /.box -->
+
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
+
+        </ui:define>
+    </ui:composition>
+</html>
+

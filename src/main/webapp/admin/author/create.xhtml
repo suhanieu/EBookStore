@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+   <ui:composition template="/WEB-INF/templates/mainTemplate/mainTemplate.xhtml">
+        <ui:define name="content">
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                   <h4>
+                        <a href="#{request.contextPath}/admin/dashBoard.xhtml">Dashboard 
+                        </a> >> <a href="#{request.contextPath}/admin/author/create.xhtml">New Author</a>
+                        
+                    </h4>
+                    
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <!-- Your Page Content Here -->
+                    <p:inputText type="hidden"/>
+
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
+
+        </ui:define>
+    </ui:composition>
+</html>
+

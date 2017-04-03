@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/templates/mainTemplate/mainTemplate.xhtml">
+        <ui:define name="content">
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h4>
+                        <a href="#{request.contextPath}/protected/dashBoard.xhtml">Dashboard 
+                        </a> >> <a href="#{request.contextPath}/protected/admin/publisher/create.xhtml">New Publisher</a>
+
+                    </h4>
+
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <!-- Default box -->
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Title</h3>
+
+
+                        </div>
+                        <div class="box-body">
+
+                            <h:form>
+                                <p:panel id="panel" header="CREATE NEW PUBLISHER">
+
+                                    <p:messages id="msgs" />
+
+                                    <p:panelGrid columns="3" styleClass="pubGrid">
+
+                                        <p:outputLabel for="publishername" value="Publisher Name:" />
+                                        <p:inputText id="publishername" value="#{publisher.publisherName}"
+                                                     placeholder="Publisher Name" 
+                                                     required="true" label="FirstName" requiredMessage="Publisher Name is Required">
+                                            <f:validateLength minimum="2" />
+                                            <p:keyFilter regEx="/[a-z ]/i"/>
+                                        </p:inputText>
+                                        <p:message for="publishername" display="icon" />
+
+                                        <p:outputLabel for="address" value="Address:"/>
+                                        <p:inputTextarea rows="6" cols="33" id="address"
+                                                         value="#{publisher.address}"   placeholder="Address"/>
+                                        <p:message for="address" display="icon" />
+
+                                        <p:outputLabel for="contactno" value="Contact"/>
+                                        <p:inputMask id="contactno" placeholder="Tel No" 
+                                            mask="9?999999999"
+                                            maxlength="10"
+                                            slotChar=" "
+                                            value="#{publisher.telNo}" />
+                                        <p:message for="contactno" display="icon" />
+
+                                        <p:outputLabel for="email" value="Email"/>
+                                        <p:inputText id="email" value="#{publisher.email}"
+                                                     placeholder="Email" >
+                                            <p:keyFilter regEx="/[a-z0-9_\.\-@]/i"/>
+                                        </p:inputText>
+                                        <p:message for="email" display="icon" />
+
+
+
+                                    </p:panelGrid>
+
+                                    <p:commandButton value="Save" 
+                                                     update="panel" oncomplete="setTimeout(function(){$('[id$=msgs]').fadeOut()},'5000')"
+                                                     actionListener="#{publisherAddBacking.createPublisher}" 
+                                                     icon="ui-icon-check" style="margin-top:5px;background-color:#ca195a "/>
+                                </p:panel>
+                                <div class="form-group">
+                                    <h:link value="Back" class="fa fa-arrow-circle-left" outcome="list"/>
+                                </div>
+                            </h:form>
+
+
+
+
+
+
+
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+
+                        </div>
+                        <!-- /.box-footer-->
+                    </div>
+                    <!-- /.box -->
+
+
+
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
+
+        </ui:define>
+    </ui:composition>
+</html>
+

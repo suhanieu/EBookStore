@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        
+    </h:head>
+      <h:form>
+                                <p:panel id="panel" header="CREATE NEW MOV">
+
+                                    <p:messages id="msgs" />
+
+                                    <h:panelGrid columns="1" >
+
+                                        <p:outputLabel for="movieyname" value="Movie Name:" />
+                                        <p:inputText id="moviename" value="#{movie.movieName}" 
+                                                     style="width:350px;"    placeholder="Movie Name" 
+                                                     required="true" label="FirstName" requiredMessage="Movie Name is Required">
+                                            <f:validateLength minimum="2" />
+                                            <p:keyFilter regEx="/[a-z ]/i"/>
+                                        </p:inputText>
+                                        <p:message for="moviename" display="icon" />
+                                    </h:panelGrid>
+
+                                    <p:commandButton value="Save" 
+                                                     update="panel" oncomplete="setTimeout(function(){$('[id$=msgs]').fadeOut()},'5000')"
+                                                     actionListener="#{movieAddBAcking.movieMovie}" 
+                                                     icon="ui-icon-check" style="margin-top:5px"/>
+                                </p:panel>
+                                <div class="form-group">
+                                    <h:link value="Back" class="fa fa-arrow-circle-left" outcome="list"/>
+                                </div>
+                            </h:form>
+
+
+
+
+</html>
+
