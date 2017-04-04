@@ -1,12 +1,86 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-    </h:body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition>
+        <div class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="latter">
+					<h6>NEWS-LETTER</h6>
+					<div class="sub-left-right">
+						<h:form>
+                                                    <h:inputText value="#{newsLetterRequestAddBacking.subscriberEmail}"/>
+                                                    <h:commandButton value="SUBSCRIBE"
+                                                                     action="/public/newsLetterRegistration.xhtml?faces-redirect=true">
+                                                        <f:param name="subscriberEmail" value="#{b.id}"/>
+                                                    </h:commandButton>
+						</h:form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="latter-right">
+					<p>FOLLOW US</p>
+					<ul class="face-in-to">
+						<li><a href="#"><span> </span></a></li>
+						<li><a href="#"><span class="facebook-in"> </span></a></li>
+						<div class="clearfix"> </div>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="footer-bottom-cate">
+					<h6>INFORMATION</h6>
+					<ul>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Customer Service</a></li>
+						<li><a href="#">Advanced Search</a></li>
+						<li ><a href="#">Orders and Returns</a></li>
+						<li ><a href="#">Contact Us</a></li>
+						
+					</ul>
+				</div>
+				<div class="footer-bottom-cate bottom-grid-cat">
+					<h6>WHY BUY FROM US</h6>
+					<ul>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Customer Service</a></li>
+						<li><a href="#">Advanced Search</a></li>
+						<li ><a href="#">Orders and Returns</a></li>
+						<li ><a href="#">Contact Us</a></li>
+					</ul>
+				</div>
+				<div class="footer-bottom-cate">
+					<h6>MY ACCOUNT</h6>
+					<ul>
+                                            <li><a href="#{request.contextPath}/public/login.xhtml">Sign In</a></li>
+						<li><a href="#{request.contextPath}/public/cart2.xhtml">View Cart</a></li>
+						<li><a href="#">My Wishlist</a></li>
+						<li ><a href="#">Track My Order</a></li>
+						<li ><a href="#">Help</a></li>
+						
+					</ul>
+				</div>
+				<div class="footer-bottom-cate cate-bottom">
+					<h6>OUR ADDERSS</h6>
+					<ul>
+						<li>No 69 </li>
+						<li>Hettipola Road</li>
+						<li>Kuliyapitiya</li>
+						
+						
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+    </ui:composition>
 </html>
 

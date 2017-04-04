@@ -2,9 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
-        <!--header-->
+
+
         <div class="header">
             <div class="top-header">
                 <div class="container">
@@ -15,62 +18,80 @@
                         </ul>
                         <ul class="support">
                             <li class="van"><a href="#"><label> </label></a></li>
-                            <li><a href="#">Free shipping <span class="live">on order over 500</span></a></li>
+                            <li class="glyphicon glyphicon-dashboard"><a href="#"><label> </label></a></li>
+                            <li><a href="#">Free shipping</a></li>
+
+                        </ul>
+                        <ul class="support">
+                            <h:form>
+                                <c:choose>
+                                    <c:when test="#{request.isUserInRole('estoreAppAdmin')}">
+                                        <li><a href="#{request.contextPath}/admin/index.xhtml"><span> </span>Dashboard</a></li>
+                                    </c:when>
+                                </c:choose>
+                            </h:form>
                         </ul>
                         <div class="clearfix"> </div>
-                    </div>
-                    <div class="top-header-right">
-                        <div class="down-top">		
-                            <select class="in-drop">
-                                <option value="English" class="in-of">English</option>
-                                <option value="Japanese" class="in-of">Japanese</option>
-                                <option value="French" class="in-of">French</option>
-                                <option value="German" class="in-of">German</option>
-                            </select>
-                        </div>
-                        <div class="down-top top-down">
-                            <select class="in-drop">
 
-                                <option value="Dollar" class="in-of">Dollar</option>
-                                <option value="Yen" class="in-of">Yen</option>
-                                <option value="Euro" class="in-of">Euro</option>
-                            </select>
-                        </div>
-                        <!---->
-                        <div class="clearfix"> </div>	
                     </div>
+
                     <div class="clearfix"> </div>		
                 </div>
             </div>
+
+
             <div class="bottom-header">
                 <div class="container">
                     <div class="header-bottom-left">
                         <div class="logo">
-                            <a href="index.html"><img src="#{request.contextPath}/customerResources/images/logo.png" alt=" " /></a>
+                            <a href="#{request.contextPath}/index.xhtml"><img src="#{request.contextPath}/customerResources/images/logo.png" alt=" " /></a>
                         </div>
                         <div class="search">
-                            <input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                            this.value = '';
-                                                        }" />
-                                <input type="submit"  value="SEARCH"/>
+                            <h:form>
+                                <h:inputText id="search" value="#{userTestSearchBacking.query}">
+                                    <f:passThroughAttribute name="placeHolder" value="Search"/>
+                                </h:inputText>
+                                <h:commandButton value="SEARCH">
 
-                                    </div>
-                                    <div class="clearfix"> </div>
-                                    </div>
-                                    <div class="header-bottom-right">					
-                                        <div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
-                                        <ul class="login">
-                                            <li><a href="login.html"><span> </span>LOGIN</a></li> |
-                                            <li ><a href="register.html">SIGNUP</a></li>
-                                        </ul>
-                                        <div class="cart"><a href="#"><span> </span>CART</a></div>
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                    <div class="clearfix"> </div>	
-                                    </div>
-                                    </div>
-                                    </div>
-                                    <!---->
-                                    </ui:composition>
-                                    </html>
+                                </h:commandButton>
+
+
+                            </h:form>
+
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="header-bottom-right">					
+                        <div class="account"><a href="#{request.contextPath}/member/profile/view.xhtml"><span> </span>YOUR ACCOUNT</a></div>
+                        <ul class="login">
+
+                            <h:form>
+                                <c:choose>
+                                    <c:when test="#{request.isUserInRole('estoreAppMember')}">
+                                        <li ><h:commandLink action="#{logOutBacking.logout}"><span> </span>LOGOUT</h:commandLink></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a href="#{request.contextPath}/public/login.xhtml"><span> </span>LOGIN</a></li> |
+                                        <li ><a href="#{request.contextPath}/public/register.xhtml">SIGNUP</a></li>
+
+                                    </c:otherwise>
+
+                                </c:choose>
+                            </h:form>
+
+                        </ul>
+                        <div class="cart">
+                            <a href="#{request.contextPath}/public/cart2.xhtml"><span> </span>CART
+                                Rs#{shoppingCart2.subtotal}
+                            </a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>	
+                </div>
+            </div>
+        </div>   
+
+    </ui:composition>
+</html>
 
