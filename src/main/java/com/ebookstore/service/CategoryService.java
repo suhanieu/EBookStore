@@ -7,6 +7,7 @@ package com.ebookstore.service;
 
 import com.ebookstore.exception.CategoryAlreadyExist;
 import com.ebookstore.model.Category;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -21,10 +22,10 @@ import javax.persistence.Query;
  */
 @Stateless
 public class CategoryService {
-    
+
     @PersistenceContext(unitName = "BookStorePU")
     EntityManager em;
-    
+
     public Category addNewCategory(Category category) throws CategoryAlreadyExist {
         Query query = em.createQuery("select c from Category c where "
                 + "c.categoryName = :categoryName");
@@ -38,5 +39,12 @@ public class CategoryService {
         em.persist(category);
         em.flush();
         return category;
+    }
+
+    public List<Category> getAllCategory() {
+        String q = "select c from Category c";
+        Query query = em.createQuery(q);
+        List<Category> categoryList = query.getResultList();
+        return categoryList;
     }
 }
