@@ -11,76 +11,44 @@
         </f:metadata>
 
 
-
-
         <div class="sub-cate">
             <div class=" top-nav rsidebar span_1_of_left">
                 <h3 class="cate">CATEGORIES</h3>
-                <ul class="menu">
-                    <ui:repeat value="#{customerCategoryDisplayBacking.categoryList}" var="c">
-                        <li class="item1"><a href="#">#{c.categoryName}<img class="arrow-img" src="#{request.contextPath}/customerResources/images/arrow1.png" alt=""/> </a>
-                            <ul class="cute">
-                                <ui:repeat value="#{c.subcategoryList}" var="s">
+
+                <ui:repeat value="#{customerCategoryDisplayBacking.categoryList}" var="c">
+                    <ul class="menu">
+                        <li class="item1">
+                            <a href="#">
+                                #{c.categoryName}
+                                <img class="arrow-img" src="#{request.contextPath}/customerResources/images/arrow1.png" alt=""/> 
+                                
+                                <ul class="cute">
+                                   <ui:repeat value="#{c.subcategoryList}" var="s">
                                     <li class="subitem1"><a href="product.html">#{s.subCategoryName} </a></li>
-                                </ui:repeat>
-
-
-                            </ul>
+                                     </ui:repeat>
+                                </ul>
+                               
+                                
+                            </a>
                         </li>
-                    </ui:repeat>
 
 
-
-
-
-                </ul>
+                    </ul>
+                </ui:repeat>
             </div>
-
-            <!--initiate accordion-->
-            <script type="text/javascript">
-                $(function () {
-                    var menu_ul = $('.menu > li > ul'),
-                            menu_a = $('.menu > li > a');
-                    menu_ul.hide();
-                    menu_a.click(function (e) {
-                        e.preventDefault();
-                        if (!$(this).hasClass('active')) {
-                            menu_a.removeClass('active');
-                            menu_ul.filter(':visible').slideUp('normal');
-                            $(this).addClass('active').next().stop(true, true).slideDown('normal');
-                        } else {
-                            $(this).removeClass('active');
-                            $(this).next().stop(true, true).slideUp('normal');
-                        }
-                    });
-
-                });
-            </script>
-
-
-
-
-
-
-
-
-            <div class=" chain-grid menu-chain">
-                <a href="#{request.contextPath}/public/cart2.xhtml"><h3>CART</h3></a>	   		     		
-                <div class="grid-chain-bottom chain-watch">
-                    <span class="actual dolor-left-grid">  #{shoppingCart2.numberOfItems} Items</span>
-
-                    <h6><a href="single.html"> Rs#{shoppingCart2.subtotal}</a></h6>  		     			   		     										
-                </div>
-            </div>
-            <div class=" chain-grid menu-chain">
-                <a href="#"><img class="img-responsive chain" src="#{request.contextPath}/customerResources/images/HSBC.jpg" alt=" " /></a>	   		     		
-
-            </div>
-
 
 
         </div>
-        <div class="clearfix"> </div>    
+
+
+
+
+
+
+
+
+
+
 
 
     </ui:composition>
