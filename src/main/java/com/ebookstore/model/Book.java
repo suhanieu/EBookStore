@@ -6,6 +6,7 @@
 package com.ebookstore.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,12 +18,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  *
- * @author Suha
+ * @author Narada
  */
 @Entity
 @Table(name = "book")
@@ -31,7 +34,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Book.findById", query = "SELECT b FROM Book b WHERE b.id = :id"),
     @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"),
     @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn"),
-    @NamedQuery(name = "Book.findByQuantity", query = "SELECT b FROM Book b WHERE b.quantity = :quantity")})
+    @NamedQuery(name = "Book.findByQuantity", query = "SELECT b FROM Book b WHERE b.quantity = :quantity"),
+    @NamedQuery(name = "Book.findByAddedDate", query = "SELECT b FROM Book b WHERE b.addedDate = :addedDate"),
+    @NamedQuery(name = "Book.findByDescription", query = "SELECT b FROM Book b WHERE b.description = :description")})
 public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,6 +58,12 @@ public class Book implements Serializable {
     @NotNull
     @Column(name = "quantity")
     private int quantity;
+    @Column(name = "addedDate")
+    @Temporal(TemporalType.DATE)
+    private Date addedDate;
+    @Size(max = 255)
+    @Column(name = "description")
+    private String description;
     @JoinColumn(name = "subCategoryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Subcategory subCategoryId;
@@ -101,6 +112,22 @@ public class Book implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Date getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Subcategory getSubCategoryId() {

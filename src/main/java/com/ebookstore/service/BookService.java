@@ -33,9 +33,15 @@ public class BookService {
         Query query = em.createQuery(q);
         query.setParameter("subId", subId);
         List<Book> bookList = query.getResultList();
-        for(Book b:bookList){
+        for (Book b : bookList) {
             System.out.println(b.getTitle());
         }
+        return bookList;
+    }
+
+    public List<Book> getRecentlyAddedBooks() {
+        String query = "SELECT b from Book b ORDER BY b.addedDate DESC";
+        List<Book> bookList = em.createQuery(query).setMaxResults(3).getResultList();
         return bookList;
     }
 

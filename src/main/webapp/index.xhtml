@@ -2,8 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/WEB-INF/templates/customerTemplate/customerTemplate.xhtml">
+        <ui:define name="metadata">
+            <f:metadata>
+
+                <f:event listener="#{customerHomePageDisplayBacking.readRecentlyAddedBook()}" type="preRenderView"/>
+
+            </f:metadata>
+        </ui:define>
+
+
+
+
+
         <ui:define name="content">
             <div class="shoes-grid">
 
@@ -70,11 +83,59 @@
                         </script> 
                     </div>
                 </div>
+                <!--Slider End-->
 
+
+                <!--New Arrivals Area-->
+                <div class="products">
+                    <h5 class="latest-product">NEW ARRIVALS</h5>	
+
+                </div>
+                
+                <div class="product-left">
+                    <ui:repeat value="#{customerHomePageDisplayBacking.recentlyAddedbooks}" var="b">
+                        
+                        <div class="col-md-4 chain-grid">
+                        <a href="single.html">
+                            
+                            <h:graphicImage value="/customerResources/img/#{b.title}.jpg" 
+                                     width="150px"       class="img-responsive chain"/>
+                        </a>
+                        <span class="star"> </span>
+                        <div class="grid-chain-bottom">
+                            <h6><a href="single.html">#{b.title}</a></h6>
+                            <div class="star-price">
+                                <div class="dolor-grid"> 
+                                    <span class="actual">300$</span>
+                                    <span class="reducedfrom">400$</span>
+                                    
+                                </div>
+                                <a class="now-get get-cart" href="#">ADD TO CART</a> 
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                       
+                    </ui:repeat>
+                   
+                </div>
 
 
             </div>
-            <!--Slider End-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <script type="text/javascript">
                 $(document).ready(function () {
                     $().UItoTop({easingType: 'easeOutQuart'});

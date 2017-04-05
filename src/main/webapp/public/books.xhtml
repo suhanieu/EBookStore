@@ -9,7 +9,8 @@
             <f:metadata>
                 <f:viewParam name="selectedSubCat" value="#{customerDisplayBooksBySubCategoryBacking.subCategoryId}"/>
                 <f:event listener="#{customerDisplayBooksBySubCategoryBacking.readBooksBySubcategoryid}" type="preRenderView"/>
- <f:event listener="#{customerCategoryDisplayBacking.readCategoryList()}" type="preRenderView"/>
+                <f:event listener="#{customerCategoryDisplayBacking.readCategoryList()}" type="preRenderView"/>
+                
             </f:metadata>
         </ui:define>
 
@@ -21,6 +22,11 @@
                         <h:form target="_blank">
                             <h4> <a href="#{request.contextPath}/index.xhtml">home</a> >> </h4>  <h4>  </h4>
                         </h:form>
+                        <ul class="w_nav">
+                            <li>#{customerDisplayBooksBySubCategoryBacking.bookList.size()} Titles </li>
+                            
+                            <div class="clearfix"> </div>	
+                        </ul>
 
 
                         <div class="clearfix"> </div>	
@@ -30,26 +36,28 @@
                 <div class="grid-product">
                     <ui:repeat value="#{customerDisplayBooksBySubCategoryBacking.bookList}" var="b">
                         <div class="  product-grid">
-                        <div class="content_box">
-                            <a href="single.html">
-                                <div class="left-grid-view grid-view-left">
-                                    <img src="#{request.contextPath}/customerResources/img/#{b.title}.jpg" class="img-responsive watch-right" alt=""/>
-                                    <div class="mask">
-                                        <div class="info">Quick View</div>
+                            <div class="content_box">
+                                <a href="single.html">
+                                    <div class="left-grid-view grid-view-left">
+                                       
+                                        <h:graphicImage value="/customerResources/img/#{b.title}.jpg"
+                                                   width="180px"      class="img-responsive watch-right" />
+                                        <div class="mask">
+                                            <div class="info">Quick View</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
+                            <h4><a href="#"> #{b.title}</a></h4>
+                            <p>It is a long established fact that a reader</p>
+                            Rs. 499
                         </div>
-                        <h4><a href="#"> #{b.title}</a></h4>
-                        <p>It is a long established fact that a reader</p>
-                        Rs. 499
-                    </div>
                     </ui:repeat>
-                    
 
 
 
-                  
+
+
 
 
 

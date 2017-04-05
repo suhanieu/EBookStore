@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Suha
+ * @author Narada
  */
 @Entity
 @Table(name = "category")
