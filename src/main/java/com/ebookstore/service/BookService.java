@@ -25,7 +25,17 @@ public class BookService {
     public List<Book> getAllBook() {
         Query query = em.createNamedQuery("Book.findAll", Book.class);
         List<Book> bookList = query.getResultList();
-        
+        return bookList;
+    }
+
+    public List<Book> getBooksBySubcategoryId(int subId) {
+        String q = "select b from Book b where b.subCategoryId.id=:subId";
+        Query query = em.createQuery(q);
+        query.setParameter("subId", subId);
+        List<Book> bookList = query.getResultList();
+        for(Book b:bookList){
+            System.out.println(b.getTitle());
+        }
         return bookList;
     }
 

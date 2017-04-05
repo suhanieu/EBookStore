@@ -6,7 +6,9 @@
 package com.ebookstore.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -45,6 +48,8 @@ public class Subcategory implements Serializable {
     @JoinColumn(name = "categoryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Category categoryId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subCategoryId")
+    private List<Book> bookList;
 
     public Subcategory() {
     }
@@ -80,6 +85,14 @@ public class Subcategory implements Serializable {
 
     public void setCategoryId(Category categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
     @Override

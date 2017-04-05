@@ -24,7 +24,12 @@
                                 
                                 <ul class="cute">
                                    <ui:repeat value="#{c.subcategoryList}" var="s">
-                                    <li class="subitem1"><a href="product.html">#{s.subCategoryName} </a></li>
+                                    <li class="subitem1">
+                                        <h:link outcome="/public/books?faces-redirect=true" value=" #{s.subCategoryName}">
+                                           
+                                             <f:param name="selectedSubCat" value="#{s.id}"/>
+                                        </h:link>
+                                    </li>
                                      </ui:repeat>
                                 </ul>
                                

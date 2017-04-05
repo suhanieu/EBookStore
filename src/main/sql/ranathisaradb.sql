@@ -38,12 +38,15 @@ CREATE TABLE `book` (
   `title` varchar(255) NOT NULL,
   `isbn` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `subCategoryId` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_book` (`subCategoryId`),
+  CONSTRAINT `FK_book` FOREIGN KEY (`subCategoryId`) REFERENCES `subcategory` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `book` */
 
-insert  into `book`(`id`,`title`,`isbn`,`quantity`) values (1,'Viragaya','9558415480',13),(2,'Gamperaliya','9550201368',9),(3,'Ape Gama','9558415448',24),(4,'Gahaniyak','9555640433',30);
+insert  into `book`(`id`,`title`,`isbn`,`quantity`,`subCategoryId`) values (1,'Viragaya','9558415480',13,6),(2,'Gamperaliya','9550201368',9,6),(3,'Kaliyugaya','9558415448',24,6),(4,'Gahaniyak','9555640433',30,7),(5,'Miriguva','9554444444',24,6),(6,'Leela','6543333333',22,6),(7,'Sheetha','3322222222',21,6);
 
 /*Table structure for table `category` */
 
@@ -54,11 +57,11 @@ CREATE TABLE `category` (
   `categoryName` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `NewIndex1` (`categoryName`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 /*Data for the table `category` */
 
-insert  into `category`(`id`,`categoryName`) values (21,'Sinhala Novel   '),(22,'Translations Novel');
+insert  into `category`(`id`,`categoryName`) values (24,'English'),(23,'Sinhala');
 
 /*Table structure for table `ebookstore_role` */
 
@@ -159,6 +162,23 @@ CREATE TABLE `publisher` (
 /*Data for the table `publisher` */
 
 insert  into `publisher`(`id`,`publisherName`,`address`,`telNo`,`email`) values (1,'Sarasa Publications','Waththala','0323345416','sarasa@gmail.com'),(2,'Malpiyali Publications','Dhankotuwa','0322223454','malpiyali@gmail.com');
+
+/*Table structure for table `subcategory` */
+
+DROP TABLE IF EXISTS `subcategory`;
+
+CREATE TABLE `subcategory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `subCategoryName` varchar(60) NOT NULL,
+  `categoryId` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_subcategory` (`categoryId`),
+  CONSTRAINT `FK_subcategory` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+/*Data for the table `subcategory` */
+
+insert  into `subcategory`(`id`,`subCategoryName`,`categoryId`) values (1,'Accounting',23),(2,'Agriculture',23),(3,'Art',23),(4,'Astrology',23),(5,'Biography',23),(6,'Novel',23),(7,'Short Stories',23),(8,'Child Care',24),(9,'Commics',24),(10,'Computer',24),(11,'Education',24);
 
 /*Table structure for table `type` */
 
