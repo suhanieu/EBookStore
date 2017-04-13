@@ -13,14 +13,14 @@
                     <div class=" login-right">
                         <h3>REGISTERED CUSTOMERS</h3>
                         <p>If you have an account with us, please log in.</p>
-                        <form>
+                        <form action="j_security_check" method="POST">
                             <div>
                                 <span>Email Address<label>*</label></span>
-                                <input type="text"/> 
+                                <input type="text" name="j_username"/> 
                             </div>
                             <div>
                                 <span>Password<label>*</label></span>
-                                <input type="text"/> 
+                                <input type="password" name="j_password"/> 
                             </div>
                             <a class="forgot" href="#">Forgot Your Password?</a>
                             <input type="submit" value="Login"/>

@@ -2,6 +2,7 @@ package com.ebookstore.customer.backingbean;
 
 import com.ebookstore.model.Category;
 import com.ebookstore.service.CategoryService;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -13,7 +14,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "customerCategoryDisplayBacking")
 @ViewScoped
-public class CustomerCategoryDisplayBacking {
+public class CustomerCategoryDisplayBacking implements Serializable {
 
     @EJB
     CategoryService categoryService;
