@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v8.55 
-MySQL - 5.6.14 : Database - ranathisaradb
+MySQL - 5.6.14-log : Database - ranathisaradb
 *********************************************************************
 */
 
@@ -39,14 +39,17 @@ CREATE TABLE `book` (
   `isbn` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `subCategoryId` int(11) NOT NULL,
+  `addedDate` date DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `indexImagePath` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_book` (`subCategoryId`),
   CONSTRAINT `FK_book` FOREIGN KEY (`subCategoryId`) REFERENCES `subcategory` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `book` */
 
-insert  into `book`(`id`,`title`,`isbn`,`quantity`,`subCategoryId`) values (1,'Viragaya','9558415480',13,6),(2,'Gamperaliya','9550201368',9,6),(3,'Kaliyugaya','9558415448',24,6),(4,'Gahaniyak','9555640433',30,7),(5,'Miriguva','9554444444',24,6),(6,'Leela','6543333333',22,6),(7,'Sheetha','3322222222',21,6);
+insert  into `book`(`id`,`title`,`isbn`,`quantity`,`subCategoryId`,`addedDate`,`description`,`indexImagePath`) values (1,'Viragaya','9558415480',13,6,'2017-04-05','Regarded as the greatest novel of all time in Sri Lanka.Reveals innocent life of buddhist based rural people.',NULL),(2,'Gamperaliya','9550201368',9,6,'2017-04-04','First part of Triology.',NULL),(3,'Kaliyugaya','9558415448',24,6,'2017-04-03','Second part of Triology.',NULL),(4,'Gahaniyak','9555640433',30,7,'2017-04-02',NULL,NULL),(5,'Miriguva','9554444444',24,6,'2017-04-01',NULL,NULL),(6,'Leela','6543333333',22,6,'2017-03-05',NULL,NULL),(7,'Sheetha','3322222222',21,6,'2017-03-05',NULL,NULL),(8,'Management Information System','9332548900',5,10,'2017-04-05',NULL,NULL),(9,'Office 2013 In Simple Steps','9456789000',5,10,'2017-04-02',NULL,NULL),(10,'Pro Jpa 2 - Mastering The Java Persistence Api','8967564533',5,10,'2017-04-01',NULL,NULL),(11,'Sams Teach Yourself Java In 24 Hours','4566666666',5,7,'2017-02-05',NULL,NULL),(12,'Sams Teach Yourself Python In 24 Hours 2ed','4565789800',5,10,'2017-04-05',NULL,NULL),(13,'Software Engineering 9ed','4565890000',5,10,'2017-04-05',NULL,NULL);
 
 /*Table structure for table `category` */
 
@@ -57,7 +60,7 @@ CREATE TABLE `category` (
   `categoryName` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `NewIndex1` (`categoryName`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 /*Data for the table `category` */
 

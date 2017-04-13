@@ -18,16 +18,16 @@ import javax.persistence.Query;
  */
 @Stateless
 public class BookService {
-
+    
     @PersistenceContext(unitName = "BookStorePU")
     EntityManager em;
-
+    
     public List<Book> getAllBook() {
         Query query = em.createNamedQuery("Book.findAll", Book.class);
         List<Book> bookList = query.getResultList();
         return bookList;
     }
-
+    
     public List<Book> getBooksBySubcategoryId(int subId) {
         String q = "select b from Book b where b.subCategoryId.id=:subId";
         Query query = em.createQuery(q);
@@ -38,11 +38,15 @@ public class BookService {
         }
         return bookList;
     }
-
+    
     public List<Book> getRecentlyAddedBooks() {
         String query = "SELECT b from Book b ORDER BY b.addedDate DESC";
         List<Book> bookList = em.createQuery(query).setMaxResults(3).getResultList();
         return bookList;
     }
-
+    
+    public void addNewBook(Book book) {
+        em.persist(book);
+    }
+    
 }

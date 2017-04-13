@@ -36,7 +36,8 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn"),
     @NamedQuery(name = "Book.findByQuantity", query = "SELECT b FROM Book b WHERE b.quantity = :quantity"),
     @NamedQuery(name = "Book.findByAddedDate", query = "SELECT b FROM Book b WHERE b.addedDate = :addedDate"),
-    @NamedQuery(name = "Book.findByDescription", query = "SELECT b FROM Book b WHERE b.description = :description")})
+    @NamedQuery(name = "Book.findByDescription", query = "SELECT b FROM Book b WHERE b.description = :description"),
+    @NamedQuery(name = "Book.findByIndexImagePath", query = "SELECT b FROM Book b WHERE b.indexImagePath = :indexImagePath")})
 public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,6 +65,9 @@ public class Book implements Serializable {
     @Size(max = 255)
     @Column(name = "description")
     private String description;
+    @Size(max = 255)
+    @Column(name = "indexImagePath")
+    private String indexImagePath;
     @JoinColumn(name = "subCategoryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Subcategory subCategoryId;
@@ -128,6 +132,14 @@ public class Book implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIndexImagePath() {
+        return indexImagePath;
+    }
+
+    public void setIndexImagePath(String indexImagePath) {
+        this.indexImagePath = indexImagePath;
     }
 
     public Subcategory getSubCategoryId() {

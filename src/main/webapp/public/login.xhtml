@@ -3,31 +3,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <ui:composition template="/WEB-INF/templates/publicTemplate/publicTemplate.xhtml">
+    <ui:composition template="/WEB-INF/templates/customerTemplate/customerTemplate.xhtml">
+
+
         <ui:define name="content">
-            <div class="container">
-                <section id="content">
-                    <form action="j_security_check" method="POST">
-                        <h1>Book Store</h1>
-                        <div>
-                            <input type="text" placeholder="Username" required="" id="username"  name="j_username"/>
-                        </div>
-                        <div>
-                            <input type="password" placeholder="Password" required="" id="password" name="j_password"/>
-                        </div>
-                        <div>
-                            <input type="submit" value="Log in" />
-                            <a href="#">Lost your password?</a>
-                            <a href="#">Register</a>
-                        </div>
-                    </form><!-- form -->
-                    <div class="button">
-                        <a href="#">Download source file</a>
-                    </div><!-- button -->
-                </section><!-- content -->
-            </div><!-- container -->
+          
+
+                <div class="account_grid">
+                    <div class=" login-right">
+                        <h3>REGISTERED CUSTOMERS</h3>
+                        <p>If you have an account with us, please log in.</p>
+                        <form>
+                            <div>
+                                <span>Email Address<label>*</label></span>
+                                <input type="text"/> 
+                            </div>
+                            <div>
+                                <span>Password<label>*</label></span>
+                                <input type="text"/> 
+                            </div>
+                            <a class="forgot" href="#">Forgot Your Password?</a>
+                            <input type="submit" value="Login"/>
+                        </form>
+                    </div>	
+                    <div class=" login-left">
+                        <h3>NEW CUSTOMERS</h3>
+                        <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                        <a class="acount-btn" href="register.xhtml">Create an Account</a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+          
 
         </ui:define>
+
+
     </ui:composition>
 </html>
 
